@@ -99,4 +99,8 @@ sudo rm -rf ~/devops
 echo -e "\033[1mI'll now disconnect you and you then you need to relog to your session with a chossen port\033[0m"
 sudo sh /etc/init.d/firewall
 sudo netfilter-persistent save
+echo "export LANGUAGE=en_US.UTF-8" >> .bashrc
+echo "export LANG=en_US.UTF-8" >> .bashrc
+echo "export LC_ALL=en_US.UTF-8" >> .bashrc
+echo "sudo locale-gen en_US.UTF-8 > /dev/null" >> .bashrc
 sudo pkill -u $LOGNAME
