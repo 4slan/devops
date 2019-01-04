@@ -48,7 +48,7 @@ do
 	fi
 done
 sudo sed -i "s/.*Port .*/Port ${PORT}/g" /etc/ssh/sshd_config
-sudo sed -i "s/.*PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
+sudo sed -i "s/.*PermitRootLogin .*/PermitRootLogin no/g" /etc/ssh/sshd_config
 sudo service sshd restart
 echo "You need to generate an key on your Host machine as follow" | pv -qL 15
 echo -e "\t\033[1mssh-keygen\033[0m"
