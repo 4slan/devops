@@ -78,7 +78,7 @@ read
 sudo vi /etc/syslog.conf
 sudo service syslog restart
 sudo sed -i "s/EMAIL_ADDRESSES .*/EMAIL_ADDRESSES\t\troot\@localhost\,amalsago\@student\.42\.fr;/g" /etc/psad/psad.conf
-sudo sed -i "s/HOSTNAME .*/HOSTNAME\t\t$(hostname)/g" /etc/psad/psad.conf
+sudo sed -i "s/HOSTNAME .*/HOSTNAME\t\t$(hostname);/g" /etc/psad/psad.conf
 sudo sed -i "s/ENABLE_SYSLOG_FILE .*/ENABLE_SYSLOG_FILE Y;/g" /etc/psad/psad.conf
 sudo sed -i "s/IPT_WRITE_FWDATA .*/IPT_WRITE_FWDATA\tY;/g" /etc/psad/psad.conf
 sudo sed -i "s/ENABLE_AUTO_IDS .*/ENABLE_AUTO_IDS\t\tY;/g" /etc/psad/psad.conf
