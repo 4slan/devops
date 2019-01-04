@@ -25,7 +25,7 @@ export LC_ALL=en_US.UTF-8
 sudo locale-gen en_US.UTF-8 > /dev/null
 sudo apt-get -yqq install git iptables-persistent fail2ban psad
 clear
-sudo git clone https://github.com/4slan/devops.git rs1 &> /dev/null
+sudo git clone https://github.com/4slan/devops.git devops &> /dev/null
 read -p "Could you please configurate your interface as static (y/n) " -n 1
 case $REPLY in
 	[yY])
