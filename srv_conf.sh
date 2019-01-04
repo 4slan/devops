@@ -25,7 +25,7 @@ export LC_ALL=en_US.UTF-8
 sudo locale-gen en_US.UTF-8 > /dev/null
 sudo apt-get -yqq install git iptables-persistent fail2ban psad
 clear
-sudo git clone https://github.com/4slan/roger-skyline-1.git rs1 &> /dev/null
+sudo git clone https://github.com/4slan/devops.git rs1 &> /dev/null
 read -p "Could you please configurate your interface as static (y/n) " -n 1
 case $REPLY in
 	[yY])
@@ -67,7 +67,7 @@ case $REPLY in
 esac
 echo
 echo "Now you are able to work through SSH from your machine which is great" | pv -qL 15
-sudo cp ~/rs1/deployement/firewall /etc/init.d/
+sudo cp ~/devops/addition/firewall /etc/init.d/
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sudo sed -i "s/action \= \%\(action\_\)s/action \= \%\(action_mwl\)s/g" /etc/fail2ban/jail.local
 read -p "Please put enables = true, maxretry = 3, port = 2222 and logpath =/var/log/auth.log"
@@ -85,9 +85,9 @@ sudo sed -i "s/ENABLE_AUTO_IDS .*/ENABLE_AUTO_IDS\t\tY;/g" /etc/psad/psad.conf
 sudo sed -i "s/AUTO_IDS_DANGER_LEVEL .*/AUTO_IDS_DANGER_LEVEL\t1;/g" /etc/psad/psad.conf
 sudo psad --sig-update
 sudo psad -R
-sudo cp ~/rs1/deployement/update_packages /etc/cron.d/
+sudo cp ~/devops/addition/update_packages /etc/cron.d/
 sudo chmod +x /etc/cron.d/update_packages
-sudo cp ~/rs1/deployement/cron_integrity /etc/cron.d/cron_integrity
+sudo cp ~/devops/addition/cron_integrity /etc/cron.d/cron_integrity
 sudo chmod +x /etc/cron.d/cron_integrity
 echo "Write following line in crontab" | pv -qL 15
 echo -e "\t\033[1m0 4 * * 2       /etc/cron.d/update_packages\033[0m"
@@ -95,7 +95,7 @@ echo -e "\t\033[1m@reboot         /etc/cron.d/update_packages\033[0m"
 echo -e "\t\033[1m0 0 * * *       /etc/cron.d/cron_integrity\t\033[0m"
 read
 sudo crontab -e
-sudo rm -rf ~/rs1
+sudo rm -rf ~/devops
 echo -e "\033[1mI'll now disconnect you and you then you need to relog to your session with a chossen port\033[0m"
 sudo sh /etc/init.d/firewall
 sudo netfilter-persistent save
