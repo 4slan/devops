@@ -85,7 +85,6 @@ sudo sed -i "s/ENABLE_AUTO_IDS .*/ENABLE_AUTO_IDS\t\tY;/g" /etc/psad/psad.conf
 sudo sed -i "s/AUTO_IDS_DANGER_LEVEL .*/AUTO_IDS_DANGER_LEVEL\t1;/g" /etc/psad/psad.conf
 sudo psad --sig-update
 sudo psad -R
-sudo psad -S
 sudo cp ~/rs1/deployement/update_packages /etc/cron.d/
 sudo chmod +x /etc/cron.d/update_packages
 sudo cp ~/rs1/deployement/cron_integrity /etc/cron.d/cron_integrity
@@ -98,7 +97,6 @@ read
 sudo crontab -e
 sudo rm -rf ~/rs1
 echo -e "\033[1mI'll now disconnect you and you then you need to relog to your session with a chossen port\033[0m"
-sudo service sshd restart
 sudo sh /etc/init.d/firewall
 sudo netfilter-persistent save
 sudo pkill -u $LOGNAME
