@@ -13,7 +13,7 @@ case $confirm in
 	[yY])
 		apt-get -qq update 
 		apt-get -qqy upgrade | tail -1; echo
-		apt-get -qqy install sudo pv
+		apt-get -qqy install sudo pv > /dev/null
 		adduser $username
 		adduser $username sudo
 esac
