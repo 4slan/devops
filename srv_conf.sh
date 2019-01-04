@@ -47,8 +47,8 @@ do
 		break
 	fi
 done
-sudo sed -i "s/Port .*/Port ${PORT}/g" /etc/ssh/sshd_config
-sudo sed -i "s/PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
+sudo sed -i "s/.*Port .*/Port ${PORT}/g" /etc/ssh/sshd_config
+sudo sed -i "s/.*PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
 sudo service sshd restart
 echo "You need to generate an key on your Host machine as follow" | pv -qL 15
 echo -e "\t\033[1mssh-keygen\033[0m"
@@ -57,8 +57,8 @@ echo -e "\033[5m\033[7mDo you confirm that you have copied your public key (y/n)
 read -n 1
 case $REPLY in
 	[yY])
-		sudo sed -i "s/PubkeyAuthentication .*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
-		sudo sed -i "s/PasswordAuthentication .*/PasswordAuthentication no/g" /etc/ssh/sshd_config
+		sudo sed -i "s/.*PubkeyAuthentication .*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+		sudo sed -i "s/.*PasswordAuthentication .*/PasswordAuthentication no/g" /etc/ssh/sshd_config
 		;;
 	*)
 		printf "\n$PLAY_GAME\n"
