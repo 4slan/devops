@@ -102,5 +102,4 @@ sudo netfilter-persistent save
 echo "export LANGUAGE=en_US.UTF-8" >> .bashrc
 echo "export LANG=en_US.UTF-8" >> .bashrc
 echo "export LC_ALL=en_US.UTF-8" >> .bashrc
-echo "sudo locale-gen en_US.UTF-8 > /dev/null" >> .bashrc
 sudo pkill -u $LOGNAME
